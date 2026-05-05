@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>В Москве не будет интернета в мае 2026 - VPN для 9 мая и праздников</title>
+    <meta name="description" content="9 мая 2026 отключение интернета: операторы предупреждают о сбоях в Москве с 5 мая. Скачайте VPN для 'белых списков', чтобы мобильный интернет работал стабильно.">
+    
+    <!-- Подключение шрифта Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Скрипт для эффекта конфетти -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        /* ================= BASE STYLES ================= */
+        :root {
+            --bg-main: #0B0F19;
+            --bg-card: #151C2C;
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+            --accent-blue: #3B82F6;
+            --accent-blue-hover: #2563EB;
+            --accent-green: #10B981;
+            --alert-red: #EF4444;
+            --alert-red-glow: rgba(239, 68, 68, 0.4);
+            --gradient-border: linear-gradient(135deg, #FF416C, #FF4B2B);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ================= HEADER & NAV ================= */
+        .sticky-alert {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--alert-red);
+            color: #fff;
+            text-align: center;
+            padding: 10px 15px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        nav {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #94A3B8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-blue-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ================= SECTIONS ================= */
+        section {
+            /* Увеличенный отступ сверху и снизу для всех секций */
+            padding: 80px 0; 
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px; /* Немного увеличенный шрифт */
+            margin-bottom: 50px; /* Увеличенный отступ под заголовком */
+        }
+
+        /* Text Blocks */
+        .text-block {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .text-block h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--accent-blue);
+        }
+
+        /* Features Grid */
+        .features-grid, .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ================= TARIFFS ================= */
+        .tariffs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 50px; /* Дополнительный отступ снизу от тарифов */
+        }
+
+        .tariff-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tariff-icon { font-size: 40px; margin-bottom: 15px; }
+        .tariff-title { font-size: 20px; font-weight: 800; margin-bottom: 5px; }
+        .tariff-duration { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
+        
+        .tariff-price-block { margin-bottom: 20px; }
+        .old-price { text-decoration: line-through; color: var(--text-muted); font-size: 16px; }
+        .new-price { font-size: 32px; font-weight: 800; color: #fff; }
+        .new-price span { font-size: 16px; color: var(--text-muted); font-weight: 400; }
+        
+        .tariff-total { font-size: 14px; color: var(--accent-green); font-weight: 600; margin-bottom: 10px; }
+        .tariff-features { font-size: 14px; color: var(--text-muted); margin-bottom: 25px; flex-grow: 1; }
+        
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-green);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Тариф 2 - Оптимальный */
+        .tariff-optimal {
+            border: 2px solid var(--alert-red);
+            box-shadow: 0 0 20px var(--alert-red-glow);
+        }
+        .tariff-optimal .badge { background: var(--alert-red); }
+
+        /* Тариф 3 - Максимум (Gradient Border Hack) */
+        .tariff-max {
+            position: relative;
+            background-clip: padding-box;
+            border: 3px solid transparent;
+        }
+        .tariff-max::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -3px; /* same as border width */
+            border-radius: inherit;
+            background: var(--gradient-border);
+        }
+        .tariff-max .badge { background: linear-gradient(135deg, #FF416C, #FF4B2B); }
+        .tariff-max .cta-btn { background: var(--gradient-border); box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4); }
+
+        /* ================= REVIEWS & FAQ ================= */
+        .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .review-stars { color: #FBBF24; margin-bottom: 10px; }
+        .review-author { font-weight: bold; margin-bottom: 5px; }
+        
+        details {
+            background: var(--bg-card);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        summary { font-weight: 600; outline: none; }
+        details p { margin-top: 10px; color: var(--text-muted); font-size: 14px; }
+
+        /* ================= FOOTER ================= */
+        footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* ================= MEDIA QUERIES (DESKTOP) ================= */
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 48px; }
+            .hero p { font-size: 18px; }
+            .features-grid, .steps-grid { grid-template-columns: repeat(2, 1fr); }
+            .tariffs-grid { grid-template-columns: repeat(3, 1fr); align-items: center; }
+            .tariff-optimal { transform: scale(1.05); z-index: 2; }
+            .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Header -->
+    <div class="sticky-alert">
+        ⚠️ Внимание! С 5 по 9 мая в Москве ожидаются перебои со связью
+    </div>
+
+    <!-- Navigation -->
+    <div class="container">
+        <nav>
+            <div class="logo">Net<span>Save</span></div>
+            <div class="nav-links">
+                <a href="#about">О проблеме</a>
+                <a href="#features">Преимущества</a>
+                <a href="#tariffs">Тарифы</a>
+                <a href="#faq">FAQ</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+        <h1>Как не остаться без связи, если в Москве отключат интернет в мае</h1>
+        <p>Операторы предупредили: с 5 по 9 мая в Москве возможны ограничения связи. Наш специальный VPN работает через "белые списки" Роскомнадзора — мобильный интернет 9 мая будет работать стабильно. Подключение за 1 минуту.</p>
+        <a href="https://tuvp1.ru/5Sg5nF?sub1=netinternet-may" class="cta-btn">Получить доступ к VPN →</a>
+    </section>
+
+    <!-- Info Block -->
+    <section id="about" class="container">
+        <div class="text-block">
+            <h2>Отключение интернета 9 мая 2026: к чему готовиться</h2>
+            <p>Операторы связи начали массово предупреждать абонентов: в Москве не будет мобильного интернета в период с 5 по 9 мая. Ограничения вводятся в целях безопасности. В центре города связь могут "глушить" полностью, из-за чего перестанут работать мессенджеры, онлайн-карты, сервисы такси и оплата.</p>
+            <br>
+            <p>Многие задаются вопросом: <strong>будет ли интернет 9 мая работать хоть как-то?</strong> Да, если ваш трафик выглядит как разрешенный. Обычные VPN-сервисы в этот период работать не будут.</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="container">
+        <h2 class="section-title">Как работает VPN для "белых списков"</h2>
+        <div class="features-grid">
+            <div class="card">
+                <h3>🟢 Гарантия связи в праздники</h3>
+                <p>Интернет в Москве на 9 мая будет работать без сбоев. Оставайтесь на связи с близкими.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ Обход "глушилок"</h3>
+                <p>Используем технологии маскировки трафика под белые списки. Провайдер видит вас как разрешенный банковский трафик.</p>
+            </div>
+            <div class="card">
+                <h3>⚡ Поддержка всех операторов</h3>
+                <p>Работает на сетях МТС, Билайн, Мегафон, Tele2 и у провайдеров домашнего интернета.</p>
+            </div>
+            <div class="card">
+                <h3>⚙️ Никаких сложных настроек</h3>
+                <p>Скачайте профиль конфигурации на телефон и оставайтесь онлайн в один клик.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructions -->
+    <section class="container">
+        <h2 class="section-title">Инструкция по подключению</h2>
+        <div class="steps-grid">
+            <div class="card">
+                <h3>Шаг 1</h3>
+                <p>Выберите подходящий тариф и нажмите кнопку на этой странице.</p>
+            </div>
+            <div class="card">
+                <h3>Шаг 2</h3>
+                <p>Скачайте конфигурацию для своего устройства (iPhone, Android, ПК).</p>
+            </div>
+            <div class="card">
+                <h3>Шаг 3</h3>
+                <p>Активируй профиль в один клик по подробной инструкции.</p>
+            </div>
+            <div class="card">
+                <h3>Шаг 4</h3>
+                <p>Пользуйтесь мессенджерами и картами, когда не будет работать интернет в Москве у остальных.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARIFFS SECTION -->
+    <section id="tariffs" class="container">
+        <h2 class="section-title">Выберите ваш тариф</h2>
+        <div class="tariffs-grid">
+            
+            <!-- Тариф 1: Старт -->
+            <div class="tariff-card">
+                <div class="tariff-icon">📱</div>
+                <div class="tariff-title">«Старт»</div>
+                <div class="tariff-duration">1 месяц на пробу</div>
+                <div class="tariff-price-block">
+                    <div class="new-price">349 ₽<span>/мес</span></div>
+                </div>
+                <div class="tariff-features">
+                    Все платформы<br>Безлимитный трафик<br>Поддержка 24/7
+                </div>
+                <a href="https://tuvp1.ru/5Sg5nF?sub1=netinternet-may" class="cta-btn">Начать →</a>
+            </div>
+
+            <!-- Тариф 2: Оптимальный -->
+            <div class="tariff-card tariff-optimal">
+                <div class="badge">⭐ Популярный</div>
+                <div class="tariff-icon">📲</div>
+                <div class="tariff-title">«Оптимальный»</div>
+                <div class="tariff-duration">3 месяца</div>
+                <div class="tariff-price-block">
+                    <div class="old-price">349 ₽</div>
+                    <div class="new-price">260 ₽<span>/мес</span></div>
+                </div>
+                <div class="tariff-total">Итого: 780 ₽ за квартал (Скидка −25%)</div>
+                <div class="tariff-features">
+                    Запас на все праздники<br>Защита от сбоев<br>Поддержка 24/7
+                </div>
+                <a href="https://tuvp1.ru/5Sg5nF?sub1=netinternet-may" class="cta-btn" style="background-color: var(--alert-red);">Выбрать →</a>
+            </div>
+
+            <!-- Тариф 3: Максимум -->
+            <div class="tariff-card tariff-max">
+                <div class="badge">🏆 Выгоднее всего</div>
+                <div class="tariff-icon">🚀</div>
+                <div class="tariff-title">«Максимум»</div>
+                <div class="tariff-duration">1 год защиты</div>
+                <div class="tariff-price-block">
+                    <div class="old-price">349 ₽</div>
+                    <div class="new-price">175 ₽<span>/мес</span></div>
+                </div>
+                <div class="tariff-total">Итого: 2 100 ₽ за год (Скидка −50%)</div>
+                <div class="tariff-features">
+                    Полная защита от любых блокировок на весь год
+                </div>
+                <a href="https://tuvp1.ru/5Sg5nF?sub1=netinternet-may" class="cta-btn" onclick="triggerConfetti(event)">Взять на год →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="container">
+        <h2 class="section-title">Отзывы пользователей</h2>
+        <div class="reviews-grid">
+            <div class="card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-author">Алексей, Москва</div>
+                <p>«Уже сталкивался со сбоями в марте, телефон просто показывал "нет сети". Поставил этот профиль заранее — теперь не страшно, что 9 мая отключат интернет.»</p>
+            </div>
+            <div class="card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-author">Елена, Зеленоград</div>
+                <p>«Работаю курьером, без карт я как без рук. Когда прочитала новости, что мобильный интернет в мае будут глушить, сразу начала искать решение. Всё грузится моментально!»</p>
+            </div>
+            <div class="card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-author">Илья, Москва</div>
+                <p>«Задавался вопросом, будет ли интернет 9 мая. Решил перестраховаться. Настройка заняла буквально минуту на Айфоне.»</p>
+            </div>
+            <div class="card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-author">Мария, Москва</div>
+                <p>«В новостях пишут, что в Москве не будет мобильного интернета несколько дней. Ваш сервис — просто спасение! Карты работают, телеграм грузит.»</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="container">
+        <h2 class="section-title">Частые вопросы</h2>
+        <details>
+            <summary>Правда ли, что в мае отключат интернет 2026?</summary>
+            <p>Да, операторы связи официально предупредили абонентов, что в Москве отключат интернет в мае, особенно в период с 5 по 9 число. Возможны перебои как с мобильным интернетом, так и с SMS.</p>
+        </details>
+        <details>
+            <summary>Будет ли работать интернет 9 мая с вашим сервисом?</summary>
+            <p>Да. Наш VPN использует протоколы обфускации, которые маскируют трафик под разрешенные сервисы ("белые списки"). Благодаря этому связь будет стабильной.</p>
+        </details>
+        <details>
+            <summary>Это работает только для мобильного интернета?</summary>
+            <p>Нет, сервис помогает как в случаях, когда пропадает мобильный интернет 9 мая, так и при сбоях у провайдеров домашнего интернета (Wi-Fi).</p>
+        </details>
+        <details>
+            <summary>Как это установить на телефон?</summary>
+            <p>Установка происходит в пару кликов. После оплаты вы получите файл конфигурации и инструкцию для iOS и Android. Технические навыки не требуются.</p>
+        </details>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>🛡️ Гарантия возврата: Если 9 мая не будет работать интернет даже с нашим профилем — мы вернем деньги в течение 24 часов.</p>
+            <br>
+            <p>© 2026 NetSave VPN. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- JS для эффекта конфетти -->
+    <script>
+        function triggerConfetti(event) {
+            var duration = 2000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#FF416C', '#FF4B2B']
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#FF416C', '#FF4B2B']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+    </script>
+</body>
+</html>
